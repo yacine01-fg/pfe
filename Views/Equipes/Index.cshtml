@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PFE.Models.Equipe>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nomequipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdplanningNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nomequipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdplanningNavigation.Idplanning)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idequipe">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idequipe">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idequipe">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

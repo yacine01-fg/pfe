@@ -1,0 +1,49 @@
+﻿@model PFE.Models.Conge
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Conge</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Idconge" />
+            <div class="form-group">
+                <label asp-for="Idemploye" class="control-label"></label>
+                <select asp-for="Idemploye" class="form-control" asp-items="ViewBag.Idemploye"></select>
+                <span asp-validation-for="Idemploye" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datedebut" class="control-label"></label>
+                <input asp-for="Datedebut" class="form-control" />
+                <span asp-validation-for="Datedebut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datefin" class="control-label"></label>
+                <input asp-for="Datefin" class="form-control" />
+                <span asp-validation-for="Datefin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Typeconge" class="control-label"></label>
+                <input asp-for="Typeconge" class="form-control" />
+                <span asp-validation-for="Typeconge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

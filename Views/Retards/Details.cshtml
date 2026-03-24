@@ -1,0 +1,30 @@
+﻿@model PFE.Models.Retard
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Retard</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dureer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dureer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IddetailNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IddetailNavigation.Iddetail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Idretard">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

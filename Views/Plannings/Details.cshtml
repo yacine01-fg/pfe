@@ -1,0 +1,36 @@
+﻿@model PFE.Models.Planning
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Planning</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nomplanning)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nomplanning)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Horairedebut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Horairedebut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Horairefin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Horairefin)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Idplanning">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

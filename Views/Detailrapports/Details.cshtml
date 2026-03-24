@@ -1,0 +1,36 @@
+﻿@model PFE.Models.Detailrapport
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Detailrapport</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datedetail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datedetail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Typedetail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Typedetail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdemployeNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdemployeNavigation.Idemp)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Iddetail">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

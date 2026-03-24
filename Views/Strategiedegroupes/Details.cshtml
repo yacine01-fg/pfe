@@ -1,0 +1,36 @@
+﻿@model PFE.Models.Strategiedegroupe
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Strategiedegroupe</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nomgroupe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nomgroupe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Seuilentree)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seuilentree)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Seuilsortie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Seuilsortie)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Idgroupe">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PFE.Models.Peripherique>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nomperi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adresseip)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nomperi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresseip)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idperi">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idperi">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idperi">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

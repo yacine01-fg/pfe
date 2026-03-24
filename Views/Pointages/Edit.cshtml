@@ -1,0 +1,49 @@
+﻿@model PFE.Models.Pointage
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Pointage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Idp" />
+            <div class="form-group">
+                <label asp-for="Idemploye" class="control-label"></label>
+                <select asp-for="Idemploye" class="form-control" asp-items="ViewBag.Idemploye"></select>
+                <span asp-validation-for="Idemploye" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Idperi" class="control-label"></label>
+                <select asp-for="Idperi" class="form-control" asp-items="ViewBag.Idperi"></select>
+                <span asp-validation-for="Idperi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datep" class="control-label"></label>
+                <input asp-for="Datep" class="form-control" />
+                <span asp-validation-for="Datep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
