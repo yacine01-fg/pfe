@@ -29,7 +29,7 @@ public partial class PostgresContext : DbContext
 
     public virtual DbSet<CustomOauthProvider> CustomOauthProviders { get; set; }
 
-    public virtual DbSet<Departement> Departements { get; set; }
+    
 
     public virtual DbSet<Detailrapport> Detailrapports { get; set; }
 
@@ -39,7 +39,7 @@ public partial class PostgresContext : DbContext
 
     public virtual DbSet<FlowState> FlowStates { get; set; }
 
-    public virtual DbSet<Heuresup> Heuresups { get; set; }
+    
 
     public virtual DbSet<Identity> Identities { get; set; }
 
@@ -91,7 +91,7 @@ public partial class PostgresContext : DbContext
 
     public virtual DbSet<Session> Sessions { get; set; }
 
-    public virtual DbSet<Sortieanticipee> Sortieanticipees { get; set; }
+   
 
     public virtual DbSet<SsoDomain> SsoDomains { get; set; }
 
@@ -331,19 +331,7 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.UserinfoUrl).HasColumnName("userinfo_url");
         });
 
-        modelBuilder.Entity<Departement>(entity =>
-        {
-            entity.HasKey(e => e.Iddept).HasName("departement_pkey");
-
-            entity.ToTable("departement");
-
-            entity.Property(e => e.Iddept)
-                .UseIdentityAlwaysColumn()
-                .HasColumnName("iddept");
-            entity.Property(e => e.Nomdept)
-                .HasMaxLength(100)
-                .HasColumnName("nomdept");
-        });
+       
 
         modelBuilder.Entity<Detailrapport>(entity =>
         {
@@ -374,7 +362,7 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.Idemp)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("idemp");
-            entity.Property(e => e.Iddept).HasColumnName("iddept");
+           
             entity.Property(e => e.Idequipe).HasColumnName("idequipe");
             entity.Property(e => e.Idgroupe).HasColumnName("idgroupe");
             entity.Property(e => e.Nomemp)
@@ -384,9 +372,6 @@ public partial class PostgresContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("prenomemp");
 
-            entity.HasOne(d => d.IddeptNavigation).WithMany(p => p.Employes)
-                .HasForeignKey(d => d.Iddept)
-                .HasConstraintName("employe_iddept_fkey");
 
             entity.HasOne(d => d.IdequipeNavigation).WithMany(p => p.Employes)
                 .HasForeignKey(d => d.Idequipe)
@@ -448,24 +433,7 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.UserId).HasColumnName("user_id");
         });
 
-        modelBuilder.Entity<Heuresup>(entity =>
-        {
-            entity.HasKey(e => e.Idhs).HasName("heuresup_pkey");
-
-            entity.ToTable("heuresup");
-
-            entity.HasIndex(e => e.Iddetail, "heuresup_iddetail_key").IsUnique();
-
-            entity.Property(e => e.Idhs)
-                .UseIdentityAlwaysColumn()
-                .HasColumnName("idhs");
-            entity.Property(e => e.Dureehs).HasColumnName("dureehs");
-            entity.Property(e => e.Iddetail).HasColumnName("iddetail");
-
-            entity.HasOne(d => d.IddetailNavigation).WithOne(p => p.Heuresup)
-                .HasForeignKey<Heuresup>(d => d.Iddetail)
-                .HasConstraintName("heuresup_iddetail_fkey");
-        });
+      
 
         modelBuilder.Entity<Identity>(entity =>
         {
@@ -1156,24 +1124,7 @@ public partial class PostgresContext : DbContext
                 .HasConstraintName("sessions_user_id_fkey");
         });
 
-        modelBuilder.Entity<Sortieanticipee>(entity =>
-        {
-            entity.HasKey(e => e.Idsortie).HasName("sortieanticipee_pkey");
-
-            entity.ToTable("sortieanticipee");
-
-            entity.HasIndex(e => e.Iddetail, "sortieanticipee_iddetail_key").IsUnique();
-
-            entity.Property(e => e.Idsortie)
-                .UseIdentityAlwaysColumn()
-                .HasColumnName("idsortie");
-            entity.Property(e => e.Durees).HasColumnName("durees");
-            entity.Property(e => e.Iddetail).HasColumnName("iddetail");
-
-            entity.HasOne(d => d.IddetailNavigation).WithOne(p => p.Sortieanticipee)
-                .HasForeignKey<Sortieanticipee>(d => d.Iddetail)
-                .HasConstraintName("sortieanticipee_iddetail_fkey");
-        });
+      
 
         modelBuilder.Entity<SsoDomain>(entity =>
         {

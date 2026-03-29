@@ -11,7 +11,6 @@ public partial class Employe
 
     public string? Prenomemp { get; set; }
 
-    public int? Iddept { get; set; }
 
     public int? Idequipe { get; set; }
 
@@ -21,7 +20,6 @@ public partial class Employe
 
     public virtual ICollection<Detailrapport> Detailrapports { get; set; } = new List<Detailrapport>();
 
-    public virtual Departement? IddeptNavigation { get; set; }
 
     public virtual Equipe? IdequipeNavigation { get; set; }
 

@@ -21,7 +21,7 @@ namespace PFE.Controllers
         // GET: Employes
         public async Task<IActionResult> Index()
         {
-            var postgresContext = _context.Employes.Include(e => e.IddeptNavigation).Include(e => e.IdequipeNavigation).Include(e => e.IdgroupeNavigation);
+            var postgresContext = _context.Employes.Include(e => e.IdequipeNavigation).Include(e => e.IdgroupeNavigation);
             return View(await postgresContext.ToListAsync());
         }
 
@@ -34,7 +34,6 @@ namespace PFE.Controllers
             }
 
             var employe = await _context.Employes
-                .Include(e => e.IddeptNavigation)
                 .Include(e => e.IdequipeNavigation)
                 .Include(e => e.IdgroupeNavigation)
                 .FirstOrDefaultAsync(m => m.Idemp == id);
@@ -49,7 +48,6 @@ namespace PFE.Controllers
         // GET: Employes/Create
         public IActionResult Create()
         {
-            ViewData["Iddept"] = new SelectList(_context.Departements, "Iddept", "Iddept");
             ViewData["Idequipe"] = new SelectList(_context.Equipes, "Idequipe", "Idequipe");
             ViewData["Idgroupe"] = new SelectList(_context.Strategiedegroupes, "Idgroupe", "Idgroupe");
             return View();
@@ -60,7 +58,7 @@ namespace PFE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Idemp,Nomemp,Prenomemp,Iddept,Idequipe,Idgroupe")] Employe employe)
+        public async Task<IActionResult> Create([Bind("Idemp,Nomemp,Prenomemp,Idequipe,Idgroupe")] Employe employe)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +66,6 @@ namespace PFE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Iddept"] = new SelectList(_context.Departements, "Iddept", "Iddept", employe.Iddept);
             ViewData["Idequipe"] = new SelectList(_context.Equipes, "Idequipe", "Idequipe", employe.Idequipe);
             ViewData["Idgroupe"] = new SelectList(_context.Strategiedegroupes, "Idgroupe", "Idgroupe", employe.Idgroupe);
             return View(employe);
@@ -87,7 +84,6 @@ namespace PFE.Controllers
             {
                 return NotFound();
             }
-            ViewData["Iddept"] = new SelectList(_context.Departements, "Iddept", "Iddept", employe.Iddept);
             ViewData["Idequipe"] = new SelectList(_context.Equipes, "Idequipe", "Idequipe", employe.Idequipe);
             ViewData["Idgroupe"] = new SelectList(_context.Strategiedegroupes, "Idgroupe", "Idgroupe", employe.Idgroupe);
             return View(employe);
@@ -98,7 +94,7 @@ namespace PFE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Idemp,Nomemp,Prenomemp,Iddept,Idequipe,Idgroupe")] Employe employe)
+        public async Task<IActionResult> Edit(int id, [Bind("Idemp,Nomemp,Prenomemp,Idequipe,Idgroupe")] Employe employe)
         {
             if (id != employe.Idemp)
             {
@@ -125,7 +121,6 @@ namespace PFE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Iddept"] = new SelectList(_context.Departements, "Iddept", "Iddept", employe.Iddept);
             ViewData["Idequipe"] = new SelectList(_context.Equipes, "Idequipe", "Idequipe", employe.Idequipe);
             ViewData["Idgroupe"] = new SelectList(_context.Strategiedegroupes, "Idgroupe", "Idgroupe", employe.Idgroupe);
             return View(employe);
@@ -140,7 +135,6 @@ namespace PFE.Controllers
             }
 
             var employe = await _context.Employes
-                .Include(e => e.IddeptNavigation)
                 .Include(e => e.IdequipeNavigation)
                 .Include(e => e.IdgroupeNavigation)
                 .FirstOrDefaultAsync(m => m.Idemp == id);

@@ -15,11 +15,10 @@ public partial class Detailrapport
 
     public virtual Absence? Absence { get; set; }
 
-    public virtual Heuresup? Heuresup { get; set; }
 
     public virtual Employe? IdemployeNavigation { get; set; }
 
     public virtual Retard? Retard { get; set; }
 
-    public virtual Sortieanticipee? Sortieanticipee { get; set; }
+    
 }
